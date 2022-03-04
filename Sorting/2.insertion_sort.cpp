@@ -1,3 +1,10 @@
+/*
+1. We start with two elements initially compare them and sort them
+2. We then take 3rd element compare it with its previous, if smaller then we move the prev element one position ahead (i.e. in its position)
+3. We then compare it with the next previous element if smaller then move it one position ahead else we place our element
+--> This way we find the right position of the element and place it there.
+4. We repeat this for n-1 elements to place all of them in the right position.
+*/
 #include <iostream>
 using namespace std;
 
