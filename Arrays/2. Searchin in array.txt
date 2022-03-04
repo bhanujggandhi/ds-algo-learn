@@ -1,0 +1,6 @@
+Objective: To find a particular element in an array.
+
+Think of a worst case. In worst case you have to traverse the whole array. All the n elements.
+But on a good day you have to traverse only 1 element or 2 elements.
+
+So, searching cost can never be more than N in an array.

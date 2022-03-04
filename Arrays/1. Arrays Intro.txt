@@ -1,0 +1,18 @@
+// An array is a collection of elements of the SAME TYPE placed in CONTIGUOUS MEMORY LOCATIONS
+// Every element is of size of the data type.
+// a[i] === *(a+i)
+
+int a[100];
+// Static allocation memory of 100 integers. 4*100 = 400 bytes
+
+int b[100] = {0};
+// Initializing the array with all zeroes. The above array will have garbage.
+
+int c[] = {1, 2, 3};
+// List allocation. Three elemets would be 1,2,3
+
+int d[100] = {1, 2, 3};
+// First three elements would be 1,2,3 rest 97 would be 0
+
+string fruits[4] = {"apple", "mango", "guava"};
+// Array of string where each string is also an array. So it is a kind of 2D array
