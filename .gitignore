@@ -1,3 +1,14 @@
+# Ignore Everything
 *
+
+!*/.vscode/*
+
+!*.pdf
+!*.txt
+# But not .cpp
 !*.cpp
-!*.h
+!*.c
+# Or directories
+!*/
+!.gitignore
+!README.md
