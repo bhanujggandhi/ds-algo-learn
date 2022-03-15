@@ -65,7 +65,7 @@ void printList(Node *ans)
     cout << ans->data << "->";
     ans = ans->next;
   }
-  cout << "NULL";
+  cout << "NULL" << endl;
 }
 
 int main()
@@ -93,6 +93,8 @@ int main()
   s->next = new Node(1);
   s = s->next;
   s->next = new Node(0);
+
+  printList(head);
 
   Node *ans = segregate(head);
 
