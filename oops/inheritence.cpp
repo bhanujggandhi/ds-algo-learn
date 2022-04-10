@@ -1,37 +1,55 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class Parent
+// Base Class
+class Employee
 {
+
 public:
-  Parent()
+  int id;
+  float salary;
+
+  Employee(int id_new)
   {
-    cout << "Parent ka constructor" << endl;
+    id = id_new;
+    salary = 34.0;
   }
-  Parent(int a)
-  {
-    cout << "Parent ka parameter constructor" << endl;
-  }
-  int id_p;
+  Employee() {}
 };
 
-class Child : public Parent
+// Derived Class
+// class {{derivedClass-name}} : {{visibility-mode}} {{base-class-name}}
+
+/*
+1. Default visibilty mode is private
+2. Private visibility Mode:  Public member of the base class becomes private members of the base class
+3. Public visibility Mode: Public members of the base class becomes will become public, protected will stay protected, private does not inherit.
+4. Private members are never inherited
+*/
+
+class Programmer : Employee
 {
 public:
-  int id_c;
+  Programmer(int impId)
+  {
+    id = impId;
+  }
+  int languageCode = 9;
+
+  void getData()
+  {
+    cout << id << endl;
+    cout << salary << endl;
+  }
 };
 
 int main()
 {
-  Child c1;
-  // Only default of parent class is inherited and not the parameterised constructor
-  // Child c2(2);
+  Employee bhanuj(1), priyanka(2);
+  cout << bhanuj.salary << endl;
+  cout << priyanka.salary << endl;
 
-  c1.id_p = 7;
-  c1.id_c = 2;
-
-  cout << "Child ID is: " << c1.id_c << endl;
-  cout << "Parent ID is: " << c1.id_p << endl;
-
-  return 0;
+  Programmer skillF(9);
+  cout << skillF.languageCode << endl;
+  skillF.getData();
 }
