@@ -37,4 +37,8 @@ int main()
     {
         cout << "Exception: " << e.what() << endl;
     }
+
+    // Object contains only data, so objects are much smaller. Compiler creates one copy of member functions of the class and every object of that class refers to that copy of function members only.
+    // Every object has it's own memory for variables and refers to the common copy for member functions
+    cout << "Size of the object includes just data variables and not function: " << sizeof(t) / sizeof(int) << endl;
 }
