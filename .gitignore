@@ -5,9 +5,10 @@
 
 !*.pdf
 !*.txt
-# But not .cpp
+# But not .cpp, .c, or .j
 !*.cpp
 !*.c
+!*.h
 # Or directories
 !*/
 !.gitignore

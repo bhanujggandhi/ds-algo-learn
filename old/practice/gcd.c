@@ -7,12 +7,8 @@ int gcd(int a, int b)
     return b;
   if (b == 0)
     return a;
-  if (a == b)
-    return a;
 
-  if (a > b)
-    return gcd(a - b, b);
-  return gcd(a, b - a);
+  return gcd(b % a, a);
 }
 
 int main()
@@ -21,7 +17,7 @@ int main()
   printf("Enter two numbers for GCD \n");
   scanf("%d %d", &a, &b);
 
-  printf("GCD of %d and %d is %d ", a, b, gcd(a, b));
+  printf("GCD of %d and %d is %d \n", a, b, gcd(a, b));
   // printf("%d", INT_MAX);
   return 0;
 }
