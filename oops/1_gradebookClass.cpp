@@ -11,11 +11,24 @@ class GradeBook
     -> Anyone can create an object of this class and access public members
     */
 public:
-    void displayMessage(string courseName)
+    void setCourseName(string name)
+    {
+        courseName = name;
+    }
+
+    string getCourseName()
+    {
+        return courseName;
+    }
+
+    void displayMessage()
     {
         cout << "Welcome to the the Grade Book for\n    "
-             << courseName << "!" << endl;
+             << getCourseName() << "!" << endl;
     }
+
+private:
+    string courseName;
 };
 
 int main()
@@ -23,10 +36,14 @@ int main()
     string nameOfCourse;
     GradeBook myGradeBook; // Creating GradeBook class object
 
+    cout << "Initial name of course is: " << myGradeBook.getCourseName()
+         << endl;
+
     cout << "Please enter the course name:" << endl;
     getline(cin, nameOfCourse); // Reads acourse name with blanks
     // cin >> nameOfCourse; // This will read input till first whitespace
-    cout << endl;
+    myGradeBook.setCourseName(nameOfCourse);
 
-    myGradeBook.displayMessage(nameOfCourse); // Calling member function using an object
+    cout << endl;
+    myGradeBook.displayMessage(); // Calling member function using an object
 }
