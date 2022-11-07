@@ -1,74 +1,69 @@
-#include <iostream>
-#include <list>
+#include <bits/stdc++.h>
 using namespace std;
 
-class Graph
-{
+void solve(vector<vector<int>> &grid, vector<vector<int>> &ans) {
+    queue<pair<int, pair<int, int>>> q;
 
-  int V;
-  list<int> *adj;
+    int rows = grid.size();
+    int cols = grid[0].size();
 
-public:
-  Graph(int V);
+    vector<vector<bool>> vis(rows, vector<bool>(cols, false));
 
-  void addEdge(int v, int u);
-
-  void bfs(int s);
-};
-
-Graph::Graph(int V)
-{
-  this->V = V;
-  adj = new list<int>[V];
-}
-
-void Graph::addEdge(int v, int u)
-{
-  adj[v].push_back(u);
-}
-
-void Graph::bfs(int s)
-{
-  bool *visited = new bool[V];
-  for (int i = 0; i < V; i++)
-  {
-    visited[i] = false;
-  }
-
-  list<int> queue;
-  visited[s] = true;
-  queue.push_back(s);
-
-  while (!queue.empty())
-  {
-    s = queue.front();
-    cout << s << " ";
-    queue.pop_front();
-
-    for (list<int>::iterator i = adj[s].begin(); i != adj[s].end(); i++)
-    {
-      if (!visited[*i])
-      {
-        visited[*i] = true;
-        queue.push_back(*i);
-      }
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            if (grid[i][j] == 1) {
+                ans[i][j] = 0;
+                q.push({0, {i, j}});
+                vis[i][j] = true;
+            }
+        }
     }
-  }
+
+    vector<int> dx = {1, -1, 0, 0};
+    vector<int> dy = {0, 0, 1, -1};
+
+    while (!q.empty()) {
+        auto curr = q.front();
+        q.pop();
+
+        int currx = curr.second.first;
+        int curry = curr.second.second;
+
+        for (int i = 0; i < 4; i++) {
+            int newx = currx + dx[i];
+            int newy = curry + dy[i];
+
+            if (newx < rows and newx >= 0 and newy < cols and newy >= 0 and grid[newx][newy] == 0 and vis[newx][newy] == false) {
+                ans[newx][newy] = curr.first + 1;
+                q.push({curr.first + 1, {newx, newy}});
+                vis[newx][newy] = true;
+            }
+        }
+    }
 }
 
-int main()
-{
-  Graph g(4);
-  g.addEdge(0, 1);
-  g.addEdge(0, 2);
-  g.addEdge(1, 2);
-  g.addEdge(2, 0);
-  g.addEdge(2, 3);
-  g.addEdge(3, 3);
+int main() {
+    int n, m;
+    cin >> n >> m;
+    vector<vector<int>> grid(n, vector<int>(m));
 
-  cout << "The BFS for following graph starting from vertex 2 is" << endl;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            int k;
+            cin >> k;
+            grid[i][j] = k;
+        }
+    }
 
-  g.bfs(2);
+    vector<vector<int>> ans(n, vector<int>(m, -1));
 
-  return 0;
+    solve(grid, ans);
+
+    for (auto x : ans) {
+        for (auto y : x) {
+            cout << y << " ";
+        }
+        cout << endl;
+    }
+    return 0;
 }
